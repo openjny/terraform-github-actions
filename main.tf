@@ -29,3 +29,19 @@ resource "azurerm_resource_group" "rg-aks" {
   name     = var.resource_group_name
   location = var.location
 }
+
+# Database モジュール（Azure SQL Database + Key Vault）
+module "database" {
+  source = "./modules/database"
+
+  resource_group_name   = azurerm_resource_group.rg-aks.name
+  location              = azurerm_resource_group.rg-aks.location
+  sql_server_name       = var.sql_server_name
+  sql_database_name     = var.sql_database_name
+  sql_admin_login       = var.sql_admin_login
+  sql_admin_password    = var.sql_admin_password
+  key_vault_name        = var.key_vault_name
+  tenant_id             = var.tenant_id
+  sql_database_sku_name = var.sql_database_sku_name
+  tags                  = var.tags
+}
