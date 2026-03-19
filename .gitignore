@@ -1,0 +1,13 @@
+# terraform-github-actions で生成されたファイルを無視する
+*.tfstate
+*.tfstate.backup
+*.tfplan
+tfplan
+.terraform/
+.terraform.lock.hcl
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+*.tfvars.json
