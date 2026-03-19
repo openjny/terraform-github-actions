@@ -34,13 +34,16 @@ jobs:
     - name: Terraform Format
       run: terraform fmt -check -recursive
 
-    # Perform a security scan of the terraform code using checkov
-    - name: Run Checkov action
-      id: checkov
-      uses: bridgecrewio/checkov-action@master
+    # セキュリティスキャン（trivy）
+    - name: Run Trivy scan
+      uses: aquasecurity/trivy-action@master
       with:
-        framework: terraform
-        skip_check: CKV2_AZURE_31
+        scan-type: 'fs'
+        scanners: 'misconfig'
+        trivy-config: '.trivyignore'
+        format: 'sarif'
+        output: 'results.sarif'
+        exit-code: '1'
 
     # Upload results to GitHub Advanced Security
     - name: Upload SARIF file
@@ -48,4 +51,4 @@ jobs:
       uses: github/codeql-action/upload-sarif@v3
       with:
         sarif_file: results.sarif
-        category: checkov
+        category: trivy
