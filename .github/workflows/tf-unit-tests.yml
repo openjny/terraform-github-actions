@@ -40,7 +40,7 @@ jobs:
       with:
         scan-type: 'fs'
         scanners: 'misconfig'
-        trivy-config: '.trivyignore'
+        trivyignores: '.trivyignore'
         format: 'sarif'
         output: 'results.sarif'
         exit-code: '1'
