@@ -1,3 +1,14 @@
+terraform {
+  required_version = ">= 1.0"
+
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = ">= 3.7.0"
+    }
+  }
+}
+
 resource "azurerm_virtual_network" "main" {
   name                = var.vnet_name
   location            = var.location
