@@ -10,6 +10,7 @@ description: Terraform コードのローカルセルフレビューを実行す
 ### 1. フォーマットとバリデーション
 - `terraform fmt -check` を実行して結果を確認
 - `terraform validate` を実行して結果を確認
+- `make review` を実行して全チェック（fmt → validate → lint → security）が通過することを確認
 
 ### 2. セキュリティ
 - パブリックアクセスが無効化されているか

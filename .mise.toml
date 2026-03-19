@@ -1,0 +1,4 @@
+[tools]
+terraform = "1.14"
+tflint = "0.61"
+trivy = "0.69"
