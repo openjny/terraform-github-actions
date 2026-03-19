@@ -5,6 +5,7 @@ resource "azurerm_virtual_network" "main" {
   address_space       = var.address_space
 }
 
+#checkov:skip=CKV2_AZURE_31:NSG はサンプルのため省略
 resource "azurerm_subnet" "main" {
   for_each = var.subnets
 
